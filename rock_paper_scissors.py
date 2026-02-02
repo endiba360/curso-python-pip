@@ -1,4 +1,5 @@
 import random
+import time
 
 options = ["piedra", "papel", "tijeras"]
 
@@ -30,26 +31,21 @@ def determine_the_winner(user, pc):
         return "Perdiste"
     
 def play():
-    print("--- Bienvenido a piedra_papel_o_tijera.py ---")
     
-    while True:
-        user = get_play_from_user()
-        
-        if user == 'salir':
-            print("¡Gracias por jugar!")
-            break
-        
-        pc = random.choice(options)
-        print(f"La computadora eligio: {pc}")
-        
-        result = determine_the_winner(user, pc)
-        
-        if result == "Empate":
-            print("💚 ¡Es un empate!")
-        elif result == "Ganaste":
-            print("🎉 ¡Felicidades! Le ganaste a la Maquina.")
-        else:
-            print("🤖 La Computadora gana esta vez.")
+    user = get_play_from_user()
+    pc = random.choice(options)
+    print("\nPedra... papel... o...")
+    time.sleep(1)
+    print(f"¡{pc.upper()}! 🤖")
+    
+    result = determine_the_winner(user, pc)
+    
+    if result == "Empate":
+        print("\n💚 ¡Es un empate!")
+    elif result == "Ganaste":
+        print("\n🎉 ¡Felicidades! Le ganaste a la Maquina.")
+    else:
+        print("\n🤖 La Computadora gana esta vez.")
 
 def play_tournament():
     user_points = 0
