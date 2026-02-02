@@ -84,5 +84,24 @@ def play_tournament():
     elif pc_points == goal:
         print("\n💀 La máquina ha dominado el mundo... perdiste el torneo.")
 
+def main_menu():
+    while True:
+        print("\n🐍--- Bienvenido a piedra_papel_o_tijera.py ---🐍")
+        print("1. Juego Rapido (Una sola ronda)")
+        print("2. Torneo (Al mejor de 3)")
+        print("3. Salir")
+        
+        option = input("\nSelecciona una opcion (1, 2 o 3): ").strip()
+        if option == "1":
+            play()
+        elif option == "2":
+            play_tournament()
+        elif option == "3":
+            print("¡Gracias por jugar! Adios.")
+            break
+        else:
+            print("❌ Error: Esa no es una opcion valida. Intentalo de nuevo.")
+        
+
 if __name__=='__main__':
-    play_tournament()
+    main_menu()
