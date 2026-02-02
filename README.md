@@ -2,7 +2,7 @@
 
 To run the game, follow the instructions in your terminal:
 
-``sh
+```sh
 cd game
 python rock_paper_scissors.py
-``
+```
