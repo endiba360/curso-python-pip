@@ -36,7 +36,7 @@ def play():
         user = get_play_from_user()
         
         if user == 'salir':
-            print("Gracias por jugar!")
+            print("¡Gracias por jugar!")
             break
         
         pc = random.choice(options)
@@ -45,11 +45,44 @@ def play():
         result = determine_the_winner(user, pc)
         
         if result == "Empate":
-            print("💚 Es un empate!")
+            print("💚 ¡Es un empate!")
         elif result == "Ganaste":
-            print("🎉 Felicidades! Le ganaste a la Maquina.")
+            print("🎉 ¡Felicidades! Le ganaste a la Maquina.")
         else:
             print("🤖 La Computadora gana esta vez.")
 
+def play_tournament():
+    user_points = 0
+    pc_points = 0
+    goal = 2
+    
+    print(f"\n🏆 ¡Torneo al mejor de 3! El primero en ganar {goal} rondas gana.")
+    
+    while user_points < goal and pc_points < goal:
+        user = get_play_from_user()
+        
+        if user == 'salir':
+            print("Gracias por jugar!")
+            break
+        
+        pc = random.choice(options)
+        print(f"La computadora eligio: {pc}")
+        
+        result = determine_the_winner(user, pc)
+        
+        if result == "Ganaste":
+            user_points += 1
+            print(f"✅ Punto para ti. Marcador: Tu {user_points} | PC {pc_points}")
+        elif result == "Perdiste":
+            pc_points +=1
+            print(f"🤖 Punto para la PC. Marcador: Tu {user_points} | PC {pc_points}")
+        else:
+            print(f"🤝 Empate técnico. El marcador sigue igual.")
+            
+    if user_points == goal:
+        print("\n👑 ¡ERES EL CAMPEÓN DEL TORNEO!")
+    elif pc_points == goal:
+        print("\n💀 La máquina ha dominado el mundo... perdiste el torneo.")
+
 if __name__=='__main__':
-    play()
+    play_tournament()
