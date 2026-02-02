@@ -55,6 +55,7 @@ def play_tournament():
     print(f"\n🏆 ¡Torneo al mejor de 3! El primero en ganar {goal} rondas gana.")
     
     while user_points < goal and pc_points < goal:
+        print(f"\n--- Marcador: Tu {user_points} | PC {pc_points} ---")
         user = get_play_from_user()
         
         if user == 'salir':
@@ -62,18 +63,20 @@ def play_tournament():
             break
         
         pc = random.choice(options)
-        print(f"La computadora eligio: {pc}")
+        print("Lanzando...")
+        time.sleep(1)
+        print(f"La PC lanzó: {pc}")
         
         result = determine_the_winner(user, pc)
         
         if result == "Ganaste":
             user_points += 1
-            print(f"✅ Punto para ti. Marcador: Tu {user_points} | PC {pc_points}")
+            print(f"Resultado: {result}")
         elif result == "Perdiste":
             pc_points +=1
-            print(f"🤖 Punto para la PC. Marcador: Tu {user_points} | PC {pc_points}")
-        else:
-            print(f"🤝 Empate técnico. El marcador sigue igual.")
+            print(f"Resultado: {result}")
+        elif result == "Empate":
+            print(f"Resultado: {result}")
             
     if user_points == goal:
         print("\n👑 ¡ERES EL CAMPEÓN DEL TORNEO!")
