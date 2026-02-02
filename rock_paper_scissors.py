@@ -31,21 +31,29 @@ def determine_the_winner(user, pc):
         return "Perdiste"
     
 def play():
-    
-    user = get_play_from_user()
-    pc = random.choice(options)
-    print("\nPedra... papel... o...")
-    time.sleep(1)
-    print(f"¡{pc.upper()}! 🤖")
-    
-    result = determine_the_winner(user, pc)
-    
-    if result == "Empate":
-        print("\n💚 ¡Es un empate!")
-    elif result == "Ganaste":
-        print("\n🎉 ¡Felicidades! Le ganaste a la Maquina.")
-    else:
-        print("\n🤖 La Computadora gana esta vez.")
+    while True:
+        user = get_play_from_user()
+        
+        if user == 'salir':
+            print("¡Gracias por jugar!")
+            break
+        
+        pc = random.choice(options)
+        print("\nPiedra... papel... o...")
+        time.sleep(1)
+        print(f"¡{pc.upper()}! 🤖")
+        
+        result = determine_the_winner(user, pc)
+        
+        if result == "Empate":
+            print("\n💚 ¡Es un empate!")
+            break
+        elif result == "Ganaste":
+            print("\n🎉 ¡Felicidades! Le ganaste a la Maquina.")
+            break
+        else:
+            print("\n🤖 La Computadora gana esta vez.")
+            break
 
 def play_tournament():
     user_points = 0
@@ -59,7 +67,7 @@ def play_tournament():
         user = get_play_from_user()
         
         if user == 'salir':
-            print("Gracias por jugar!")
+            print("¡Gracias por jugar!")
             break
         
         pc = random.choice(options)
